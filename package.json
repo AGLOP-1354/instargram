@@ -1,0 +1,20 @@
+{
+  "name": "instargram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "server": "cd back-end && nodemon app",
+    "front": "cd front-end && npm start",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run front\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^6.4.0",
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^2.0.1",
+    "nodemon": "^2.0.15",
+    "styled-components": "^5.3.3"
+  }
+}
