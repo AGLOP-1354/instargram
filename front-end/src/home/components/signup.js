@@ -28,7 +28,7 @@ export const Div = styled.div`
   
   ${props => props.info && css`
     width: 350px;
-    height: 425px;
+    height: 455px;
     background: #ffffff;
     border: 1px solid #b8b8b8;
     margin-bottom: 10px;

@@ -1,8 +1,26 @@
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 import { Div, Img, Button, Input, Form, A } from './signin';
 
 const SignIn = () => {
+    const [userInfo, setUserInfo] = useState({
+        email: '',
+        password: '',
+    });
 
+    const onUserInfoChange = useCallback((e) => {
+        const { name, value } = e.target;
+        setUserInfo({
+            ...userInfo,
+            [name]: value,
+        });
+    });
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        console.log(userInfo);
+    }
+
+    const { email, password } = userInfo;
     return (
         <Div container>
             <Div info>
@@ -10,12 +28,29 @@ const SignIn = () => {
                     <Img src={process.env.PUBLIC_URL + '/Img/main-logo.png'}/>
                 </Div>
                 <div className="user-info">
-                    <Form id="login-form" action="/auth/login" method="post">
+                    <Form onSubmit={onSubmit}>
                         <Div flex>
-                            <Input id="email" type="email" name="email" placeholder="전화번호, 사용자 이름 또는 이메일" required autoFocus />
+                            <Input
+                                id="email"
+                                type="email"
+                                name="email"
+                                value={email}
+                                onChange={onUserInfoChange}
+                                placeholder="전화번호, 사용자 이름 또는 이메일"
+                                required
+                                autoFocus
+                            />
                         </Div>
                         <Div flex className="input-group">
-                            <Input id="password" type="password" name="password" placeholder="비밀번호" required />
+                            <Input
+                                id="password"
+                                type="password"
+                                name="password"
+                                value={password}
+                                onChange={onUserInfoChange}
+                                placeholder="비밀번호"
+                                required
+                            />
                         </Div>
                         <Div flex>
                             <Button id="login" type="submit" className="btn">로그인</Button>
