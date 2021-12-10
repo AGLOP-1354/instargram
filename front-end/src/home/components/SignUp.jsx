@@ -1,7 +1,28 @@
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 import { Div, Img, A, Form, Input, Button } from './signup';
 
 const SignUp = () => {
+    const [userInfo, setUserInfo] = useState({
+        email: '',
+        password: '',
+        passwordCheck: '',
+        nickname: ''
+    });
+    const { email, password, passwordCheck, nickname } = userInfo;
+
+    const onUserInfoChange = useCallback((e) => {
+        const { name, value } = e.target;
+        setUserInfo({
+            ...userInfo,
+            [name]: value,
+        });
+    });
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        console.log(userInfo);
+    }
+
     return (
         <Div container>
             <Div info>
@@ -19,18 +40,54 @@ const SignUp = () => {
                     또는
                     <Div line></Div>
                 </Div>
-                <Form id="join-form" action="/auth/join" method="post">
-                    <Div flex className="input-group">
-                        <Input id="join-email" type="email" name="email" placeholder="이메일 주소" />
-                    </Div>
-                    <Div flex className="input-group">
-                        <Input id="join-nick" type="text" name="nick" placeholder="사용자 이름" />
-                    </Div>
-                    <Div flex className="input-group">
-                        <Input id="join-password" type="password" name="password" placeholder="비밀번호" />
+                {/* action="/auth/join" method="post"*/}
+                <Form
+                    onSubmit={onSubmit}
+                >
+                    <Div flex>
+                        <Input
+                            type="email"
+                            name="email"
+                            onChange={onUserInfoChange}
+                            value={email}
+                            placeholder="이메일 주소"
+                            required
+                        />
                     </Div>
                     <Div flex>
-                        <Button id="join-btn" type="submit" className="btn">가입</Button>
+                        <Input
+                            type="text"
+                            name="nickname"
+                            onChange={onUserInfoChange}
+                            value={nickname}
+                            placeholder="사용자 이름"
+                            required
+                        />
+                    </Div>
+                    <Div flex>
+                        <Input
+                            type="password"
+                            name="password"
+                            onChange={onUserInfoChange}
+                            value={password}
+                            placeholder="비밀번호"
+                            required
+                        />
+                    </Div>
+                    <Div flex>
+                        <Input
+                            type="password"
+                            name="passwordCheck"
+                            onChange={onUserInfoChange}
+                            value={passwordCheck}
+                            placeholder="비밀번호 확인"
+                            required
+                        />
+                    </Div>
+                    <Div flex>
+                        <Button type="submit">
+                            가입
+                        </Button>
                     </Div>
                 </Form>
             </Div>
