@@ -6,12 +6,17 @@
   width: 100px;
 }
 .header{
-  width: 350px;
+  width: 100vw;
   height: 50px;
   background-color: rgb(0, 0, 0);
   display: flex;
   justify-content: space-around;
   align-items: center;
+  position: fixed;
+  top: 0;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
 }
 .heart{
   font-size: 20px;
@@ -24,8 +29,4 @@
 .a{
   display: flex;
   flex-grow:0.6;
-}
-.body{
-  display: flex;
-  justify-content: center;
 }

@@ -7,11 +7,11 @@ const User = require('../models/user');
 const router = express.Router();
 
 router.post('/join', isNotLoggedIn, async (req, res, next) => {
-  const { email, nick, password } = req.body;
+  const {email, nick, password} = req.body;
   try {
-    const exUser = await User.findOne({ where: { email } });
-    if(exUser) {
-      return res.redirect(`/join?error=exist`);
+    const exUser = await User.findOne({where: {email}});
+    if (exUser) {
+      return res.redirect(`/?error=exist`);
     }
     const hash = await bcrypt.hash(password, 12);
     await User.create({
@@ -40,7 +40,9 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
         console.error(loginError);
         next(loginError);
       }
-      return res.redirect('/');
+      return req.session.save(() => {
+        res.redirect('http://localhost:3000')
+      })
     });
   })(req, res, next); // 미들웨어 내의 미들웨어는 이것을 붙입니다.
 })

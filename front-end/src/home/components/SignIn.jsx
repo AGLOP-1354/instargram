@@ -1,11 +1,14 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useState, useEffect} from 'react';
 import { Div, Img, Button, Input, Form, A } from './signin';
+import axios from "axios";
 
 const SignIn = () => {
     const [userInfo, setUserInfo] = useState({
         email: '',
         password: '',
     });
+
+    const { email, password } = userInfo;
 
     const onUserInfoChange = useCallback((e) => {
         const { name, value } = e.target;
@@ -15,12 +18,6 @@ const SignIn = () => {
         });
     });
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-        console.log(userInfo);
-    }
-
-    const { email, password } = userInfo;
     return (
         <Div container>
             <Div info>
@@ -28,7 +25,7 @@ const SignIn = () => {
                     <Img src={process.env.PUBLIC_URL + '/Img/main-logo.png'}/>
                 </Div>
                 <div className="user-info">
-                    <Form onSubmit={onSubmit}>
+                    <Form action="/auth/login" method="post">
                         <Div flex>
                             <Input
                                 id="email"
@@ -53,7 +50,7 @@ const SignIn = () => {
                             />
                         </Div>
                         <Div flex>
-                            <Button id="login" type="submit" className="btn">로그인</Button>
+                            <Button type="submit">로그인</Button>
                         </Div>
                     </Form>
                     <Div lineContain flex>
