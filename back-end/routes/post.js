@@ -25,7 +25,6 @@ const upload = multer({
       cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
     },
   }),
-  limits: {fileSize: 5 * 1024 * 1024},
 });
 
 router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
@@ -34,7 +33,7 @@ router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
 });
 
 const upload2 = multer();
-router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
+router.post('/', isLoggedIn, upload.none(), async (req, res, next) => {
   try {
     const post = await Post.create({
       content: req.body.content,
@@ -55,6 +54,7 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
     res.redirect('/');
   } catch (err) {
     console.error(err);
+    console.log('dskjflksdjfl')
     next(err);
   }
 });

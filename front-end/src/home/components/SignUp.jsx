@@ -2,13 +2,14 @@ import React, {useCallback, useState} from 'react';
 import { Div, Img, A, Form, Input, Button } from './signup';
 
 const SignUp = () => {
+
     const [userInfo, setUserInfo] = useState({
         email: '',
         password: '',
         passwordCheck: '',
-        nickname: ''
+        nick: ''
     });
-    const { email, password, passwordCheck, nickname } = userInfo;
+    const { email, password, passwordCheck, nick } = userInfo;
 
     const onUserInfoChange = useCallback((e) => {
         const { name, value } = e.target;
@@ -17,11 +18,6 @@ const SignUp = () => {
             [name]: value,
         });
     });
-
-    const onSubmit = (e) => {
-        e.preventDefault();
-        console.log(userInfo);
-    }
 
     return (
         <Div container>
@@ -33,7 +29,7 @@ const SignUp = () => {
                     친구들의 사진과 동영상을 보려면 가입하세요.
                 </Div>
                 <Div common flex kakao>
-                    <A id="kakao" href="/auth/kakao" className="btn">KaKao로 로그인</A>
+                    <A id="kakao" href="http://localhost:4848/auth/kakao" className="btn">KaKao로 로그인</A>
                 </Div>
                 <Div lineContain flex>
                     <Div line></Div>
@@ -41,9 +37,7 @@ const SignUp = () => {
                     <Div line></Div>
                 </Div>
                 {/* action="/auth/join" method="post"*/}
-                <Form
-                    onSubmit={onSubmit}
-                >
+                <Form action="/auth/join" method="post">
                     <Div flex>
                         <Input
                             type="email"
@@ -57,9 +51,9 @@ const SignUp = () => {
                     <Div flex>
                         <Input
                             type="text"
-                            name="nickname"
+                            name="nick"
                             onChange={onUserInfoChange}
-                            value={nickname}
+                            value={nick}
                             placeholder="사용자 이름"
                             required
                         />

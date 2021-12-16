@@ -32,7 +32,7 @@ router.get('/hashtag', async (req, res, next) => {
       posts = await hashtag.getPosts({ include: [{ model: User }] });
     }
 
-    return res.render('main', {
+    return res.send( {
       title: `${query}` | 'NodeBird',
       twits: posts,
     });
@@ -51,7 +51,7 @@ router.get('/', async (req, res, next) => {
       },
       order: [['createdAt', 'DESC']],
     });
-    res.render('main', {
+    res.send({
       title: 'NodeBird',
       twits: posts,
     });

@@ -1,5 +1,4 @@
-import Styled, {css} from 'styled-components';
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export const Div = styled.div`
   box-sizing: border-box;

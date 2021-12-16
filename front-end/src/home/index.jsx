@@ -1,17 +1,16 @@
 import React from 'react';
-import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import SignIn from "./components/SignIn.jsx";
 import SignUp from './components/SignUp.jsx';
 
-const Home = () => {
+const Home = ({history}) => {
     return (
         <div>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/signin" element={<SignIn />} />
-                    <Route path="/signup" element={<SignUp />} />
-                </Routes>
-            </BrowserRouter>
+            <Routes>
+                <Route path='/' element={<SignIn />} />
+                <Route path='/signin' element={<SignIn />} />
+                <Route path="/signup" element={<SignUp />} />
+            </Routes>
         </div>
     );
 };
