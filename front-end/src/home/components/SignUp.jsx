@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from 'react';
-import { Div, Img, A, Form, Input, Button } from './signup';
+import { Div, Img, A, Form, Input, Button, P } from './signup';
 
 const SignUp = () => {
 
@@ -87,7 +87,7 @@ const SignUp = () => {
             </Div>
 
             <Div info signin flex>
-                <p>계정이 없으신가요?</p>
+                <P>계정이 있으신가요?</P>
                 <A signin id="join" href="/signin" className="btn">로그인</A>
             </Div>
         </Div>

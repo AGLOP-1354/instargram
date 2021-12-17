@@ -1,5 +1,5 @@
 import React, {useCallback, useState, useEffect} from 'react';
-import { Div, Img, Button, Input, Form, A } from './signin';
+import { Div, Img, Button, Input, Form, A, P } from './signin';
 import axios from "axios";
 
 const SignIn = () => {
@@ -66,7 +66,7 @@ const SignIn = () => {
             </Div>
 
             <Div info signup flex>
-                <p>계정이 없으신가요?</p>
+                <P>계정이 없으신가요?</P>
                 <A signup id="join" href="/signup" className="btn">가입하기</A>
             </Div>
         </Div>
