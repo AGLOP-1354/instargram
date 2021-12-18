@@ -34,6 +34,11 @@ export const Div = styled.div`
     border-radius: 50px;
     position: relative;
   `}
+  
+  ${props => props.contents && css`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  `}
 `;
 
 export const Img = styled.img`

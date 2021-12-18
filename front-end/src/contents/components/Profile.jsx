@@ -26,9 +26,8 @@ const tabStyle4 = {
 const Profile = ({user, postData}) => {
     const [activeId, setActiveId] = useState(0);
 
-
     const profilePostImg = postData.map(post => {
-        <ProfilePost post={post} user={user} />
+        return <ProfilePost post={post} user={user} />
     })
 
     const clickHandler = (id) => {
@@ -86,7 +85,7 @@ const Profile = ({user, postData}) => {
                 </Ul>
             </Div>
 
-            <div className="contents">{tabObj[activeId]}</div>
+            <Div contents>{tabObj[activeId]}</Div>
         </Div>
     );
 };
